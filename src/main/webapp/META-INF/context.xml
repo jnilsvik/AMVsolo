@@ -1,0 +1,11 @@
+<Context>
+    <Resource name="jdbc/database"
+              auth="Container"
+              type="javax.sql.DataSource"
+              username="root"
+              password="12345"
+              driverClassName="org.mariadb.jdbc.Driver"
+              url="jdbc:mariadb://172.17.0.1:3308/AMVDatabase"
+              maxActive="15"
+              maxIdle="3"/>
+</Context>
