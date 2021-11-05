@@ -53,7 +53,7 @@ public class UpdateTool extends HttpServlet {
                     "            <label for = 'firstname'>First Name: </label><br>" +
                     "        </form>");
 
-
+/*
             model.getToolName()
             model.getToolCategory()
             model.getDescription()
@@ -72,12 +72,12 @@ public class UpdateTool extends HttpServlet {
             model.setPicturePath(); // TODO: 05.11.2021 need to figure out how this works with file uploads 
             model.setPriceFirst();
             model.setPriceAfter();
-            
+ */
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-      
+
         
 
     }
