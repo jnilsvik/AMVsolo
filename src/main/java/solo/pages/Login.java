@@ -20,10 +20,6 @@ public class Login extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
-
-        //PrintWriter out = response.getWriter();
-        //writeUserForm(out);
-
         try {
             request.getRequestDispatcher("/login.jsp").forward(request,response);
         } catch (ServletException e) {
@@ -65,17 +61,5 @@ public class Login extends HttpServlet {
             e.printStackTrace();
         }
         return exists;
-    }
-    public void writeUserForm(PrintWriter out){
-        out.print("<section class=\"main\">");
-        out.print("    <h1>Find Tool</h1>");
-        out.print("    <form action='login' method='POST'>");
-        out.print("        <label for='email'>email:</label>");
-        out.print("        <input type='email' name='email'/>");
-        out.print("        <label for='password'>password:</label>");
-        out.print("        <input type='text' name='password'/>");
-        out.print("        <input type='submit' />");
-        out.print("    </form>");
-        out.print("<a href='register'>Don't have an account already? Register here!</a>");
     }
 }

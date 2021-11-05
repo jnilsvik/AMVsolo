@@ -29,7 +29,7 @@
             <label for = 'userAdmin'>Admin: </label><br>
             <input type = 'checkbox' name = 'userAdmin' value = 'true'><br>
             <input type = 'submit' value = 'Register User'>
-            </form>
+        </form>
     </section>
 </body>
 </html>

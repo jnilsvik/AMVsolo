@@ -53,15 +53,11 @@ public class DBQueries {
         }
         if (model.size() != 0) {
             for(BookingModel b: model){
-
-
                 out.print(b.getStartDate());
                 out.print(b.getEndDate());
                 out.print(b.getReturnDate());
                 out.print(b.getUserID());
                 out.print(b.getToolID());
-
-
             }
         }return model;
 
