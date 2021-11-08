@@ -1,5 +1,6 @@
 package solo.pages;
 
+
 import solo.util.hashPassword;
 
 import javax.servlet.ServletException;
@@ -32,10 +33,10 @@ public class Login extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         String email = request.getParameter("email");
-        String password = hashPassword.encryptThisString(request.getParameter("password"));
+        String password = hashPassword.encryptThisString(request.getParameter("pass"));
         if(Validation(email,password)){
             HttpSession session=request.getSession();
-            session.setAttribute("email", email); //TODO a way to set attributes
+            session.setAttribute("email", email); // ! a way to set attributes
             try {
                 request.getRequestDispatcher("/landing.jsp").forward(request,response);
             } catch (ServletException e) {
@@ -61,5 +62,17 @@ public class Login extends HttpServlet {
             e.printStackTrace();
         }
         return exists;
+    }
+
+    // no clue how to call this...
+    void Logout(HttpServletRequest request,HttpServletResponse response){
+        HttpSession session = request.getSession(false);
+        session.invalidate();
+        try {
+            request.getRequestDispatcher("/login.jsp").forward(request,response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

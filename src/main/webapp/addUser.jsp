@@ -18,11 +18,6 @@
         justify-content: center;
         align-items: center;
         padding-bottom: 70px;
-
-        background-image: url(https://media.discordapp.net/attachments/472062607646261249/702987431653277705/unknown.png);
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: 100% 100%;
     }
     article{
         width: 480px;
@@ -32,22 +27,30 @@
         padding: 30px 60px 26px;
         margin-top: -75px;
     }
+    body{
+        background-image: url(https://media.discordapp.net/attachments/472062607646261249/702987431653277705/unknown.png);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }
     button {
         width: 100%;
-    }</style>
-
+    }
+    </style>
 </head>
 
 <body>
+<jsp:include page="_sidebar.jsp"></jsp:include>
+
 <div class="page">
-    <article class="my-3" id="floating-labels">
-        <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0     mb-xl-2">
-            <h3>Register</h3>
+    <article class="my-3" id="floating-labels"> <!-- this is temp to genter-->
+        <div class="bd-heading align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+            <h3>Add User</h3>
         </div>
 
         <div>
             <div class="bd-example">
-                <form action="register" method="post">
+                <form action="">
                     <div class="form-floating mb-3">
                         <input type="email" class="form-control" id="email" placeholder="name@example.com">
                         <label for="email">Email address</label>
@@ -69,10 +72,7 @@
                         <label for="phoneNr">Phone Number</label>
                     </div>
                     <div class="col-12">
-                        <button class="btn btn-primary" type="submit">Register</button>
-                    </div>
-                    <div style="text-align:center">
-                        <a href='login'>Already have an account? Login here!</a>
+                        <button class="btn btn-primary" type="submit">Add User</button>
                     </div>
                 </form>
             </div>
