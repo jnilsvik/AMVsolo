@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-<jsp:include page="sidebar.jsp"/>
+<jsp:include page="_sidebar.jsp"/>
 <section class="main">
     <h1>Find Tool</h1>
     <form action='GetTool' method='GET'>

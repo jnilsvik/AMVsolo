@@ -28,11 +28,27 @@ public class ToolDetail extends HttpServlet {
         }
     }
     private void writeToolDetails(ToolModel model, PrintWriter out){
-        out.println(model.getToolName());
+        out.println("<h1>"+model.getToolName()+"</h1>");
+        out.println("img model.getPicturePath());
+        model.getDescription();
+
+        out.println("Price first day: " + model.getPriceFirst());
+        out.println("Price after first day: "+ model.getPriceAfter());
+        out.println(model.getMaintenance()); // this is quite a dumb attribute btw
+
+        //book now
+        out.print("<button type='submit' name='book' value='book>");
+        //calendar
+
+
+
+        // no need
         out.println(model.getToolCategory());
-        out.println(model.getPriceFirst());
-        out.println(model.getPriceAfter());
-        out.println(model.getMaintenance());
-        out.println(model.getPicturePath());
+
+
+
+
+
     }
+
 }

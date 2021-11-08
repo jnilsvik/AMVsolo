@@ -13,7 +13,7 @@
     <title>Index</title>
 </head>
 <body>
-<jsp:include page="/sidebar.jsp"/>
+<jsp:include page="/_sidebar.jsp"/>
 <!--content goes here-->
 <section class="main">
     <h1>Hello ${email}</h1>

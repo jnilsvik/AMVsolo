@@ -1,7 +1,5 @@
 package solo.models;
 
-//by Paul
-
 import solo.util.DBUtils;
 
 import java.io.PrintWriter;
@@ -70,6 +68,14 @@ public class BookingModel {
         this.endDate = endDate;
     }
 
+    public LocalDate getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(LocalDate returnDate) {
+        this.returnDate = returnDate;
+    }
+
     public double getTotalPrice(PrintWriter out){
         double totalPrice = 0;
         try {
@@ -111,12 +117,5 @@ public class BookingModel {
         }
         //Currently, there is no toolName stored in the db will be added
         return "currently no toolName stored";
-    }
-
-    public LocalDate getReturnDate() {
-        return returnDate;
-    }
-    public void setReturnDate(LocalDate returnDate) {
-        this.returnDate = returnDate;
     }
 }

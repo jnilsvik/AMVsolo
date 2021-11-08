@@ -1,4 +1,4 @@
-package solo.scrap.lists;
+package solo.z_scrap.lists;
 
 import solo.models.ToolModel;
 import solo.util.DBUtils;
@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 /*  by Joachim */
+@WebServlet(name = "td", value = "/td")
 public class ToolDetail extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

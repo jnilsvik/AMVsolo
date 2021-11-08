@@ -11,7 +11,7 @@
     <title>booking</title>
 </head>
 <body>
-    <jsp:include page="/sidebar.jsp"/>
+    <jsp:include page="/_sidebar.jsp"/>
     <section class="main">
         <div class="booking">
             ${email}
