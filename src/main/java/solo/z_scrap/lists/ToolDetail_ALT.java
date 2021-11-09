@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
     gets a tool id from landing page and prints all information about it
 */
+@WebServlet(name = "xtd2", value = "/xtd2")
 public class ToolDetail_ALT extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

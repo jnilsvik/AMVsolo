@@ -1,5 +1,5 @@
 <script src="https://kit.fontawesome.com/f65d62ad61.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="CSS/style.css">
+<link rel="stylesheet" href="css/style.css">
 
 <!-- This is the sidebar -->
 <nav class="sidebar">

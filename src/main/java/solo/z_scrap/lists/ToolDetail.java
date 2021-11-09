@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 /*  by Joachim */
-@WebServlet(name = "td", value = "/td")
+@WebServlet(name = "xtd1", value = "/xtd1")
 public class ToolDetail extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
