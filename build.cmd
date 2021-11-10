@@ -14,6 +14,7 @@ docker container run --rm -it -d --name tomcat --publish 8081:8080 trym/tomcat
 
 echo.
 echo "Link: http://localhost:8081/bacit-web-1.0-SNAPSHOT/"
+time /T
 echo.
 
 pause
