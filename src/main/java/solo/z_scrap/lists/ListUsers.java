@@ -26,7 +26,6 @@ public class ListUsers extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         try {
-            Html.printSidebar(out);
             out.println("<!DOCTYPE html>" +
                     "<head>" +
                     "  <title>Sorting Tables w/ JavaScript</title>" +

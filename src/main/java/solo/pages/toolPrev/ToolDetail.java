@@ -1,4 +1,4 @@
-package solo.pages;
+package solo.pages.toolPrev;
 
 import solo.models.ToolModel;
 import solo.util.DBQueries;

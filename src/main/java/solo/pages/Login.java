@@ -35,10 +35,11 @@ public class Login extends HttpServlet {
         String email = request.getParameter("email");
         String password = hashPassword.encryptThisString(request.getParameter("pass"));
 
-        if(validateUser(email,password)){
+        if(CheckUserExist(email,password)){
             HttpSession session=request.getSession();
             session.setAttribute("email", email);
-            session.setAttribute("admin", validateAdmin(email));
+            session.setAttribute("admin", CheckUserAdmin(email));
+            session.setAttribute("union", CheckUserUnion(email));
 
             try {
                 request.getRequestDispatcher("/landing.jsp").forward(request,response);
@@ -49,7 +50,7 @@ public class Login extends HttpServlet {
             out.print("Invalid email or password"); // TODO: 10.11.2021 check this one for better way
         }
     }
-    public boolean validateUser(String email, String pw){
+    public boolean CheckUserExist(String email, String pw){
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection dbC = DriverManager.getConnection(
@@ -67,7 +68,7 @@ public class Login extends HttpServlet {
         return false;
     }
 
-    boolean validateAdmin(String email){
+    boolean CheckUserAdmin(String email){
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection dbC = DriverManager.getConnection(
@@ -80,6 +81,31 @@ public class Login extends HttpServlet {
             return rs.getBoolean("userAdmin");
         } catch (Exception e){
             e.printStackTrace();
+        }
+        return false;
+    }
+
+    boolean CheckUserUnion(String email){
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection dbC = DriverManager.getConnection(
+                    "jdbc:mariadb://172.17.0.1:3308/AMVDatabase", "root", "12345");
+            PreparedStatement ps = dbC.prepareStatement(
+                    "select unionMember from AMVUser where email=?");
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+
+             return rs.getBoolean("unionMember");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    boolean ValidateUserIsAdmin(HttpSession session){
+        String a = session.getAttribute("admin").toString();
+        if (a.equals("1")) {
+            return true;
         }
         return false;
     }
