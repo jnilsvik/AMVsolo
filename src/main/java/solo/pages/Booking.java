@@ -23,16 +23,15 @@ public class Booking extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
-        String uID = req.getParameter("userID");
-        String tID = req.getParameter("toolID");
 
-        out.println("<form action='b' method='post' >");
+        out.println("<form action='b' method='post'>");
         out.println(    "<label for='dateStart'> start: </label>");
         out.println(    "<input type='date' name='dateStart' id='dateStart' min='"+LocalDate.now()+"' required>");
         out.println(    "<label for='dateEnd'> until: </label>");
         out.println(    "<input type='date' name='dateEnd' id='dateEnd' min='"+LocalDate.now()+"' max='"+LocalDate.now().plusDays(3)+"' required>");
-        out.println(    "<input type='hidden' name='uID' value='"+ uID +"'>");
-        out.println(    "<input type='hidden' name='uID' value='"+ tID +"'>");
+        // TODO: 08.11.2021 currently this is does not work as intended as we cannot limit the the date, will prob need to use the amount of days
+        out.println(    "<input type='hidden' name='uID' value='"+ req.getParameter("userID") +"'>");
+        out.println(    "<input type='hidden' name='tID' value='"+ req.getParameter("toolID") +"'>");
         out.println(    "<input type='submit'>");
         out.println("</form>");
     }
@@ -41,8 +40,6 @@ public class Booking extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
 
-        String uID = req.getParameter("userID");
-        String tID = req.getParameter("toolID");
         LocalDate reqStartDate = LocalDate.parse(req.getParameter("dateStart"));
         LocalDate reqEndDate = LocalDate.parse(req.getParameter("dateEnd"));
 
@@ -51,13 +48,13 @@ public class Booking extends HttpServlet {
             // * declares the model for transfer
             BookingModel bModel = new BookingModel(
                     0,
-                    Integer.parseInt(uID),
-                    Integer.parseInt(tID),
+                    Integer.parseInt(req.getParameter("userID")),
+                    Integer.parseInt(req.getParameter("toolID")),
                     reqStartDate,
                     reqEndDate,
                     null);
             // gets the tools booked dates, compares them to the requested dates -> returns bool. if true = insert tool into db
-            if(CompareAndValidateBooking(reqStartDate, reqEndDate, GetBookedDates(out,tID))){
+            if(CompareAndValidateBooking(reqStartDate, reqEndDate, GetBookedDates(out,req.getParameter("toolID")))){
                 InsertBooking(out, bModel);
                 out.print("Booking complete"); // TODO: 31.10.2021 re-dir. to "booking complete" page
             } else {

@@ -34,34 +34,54 @@ public class Login extends HttpServlet {
 
         String email = request.getParameter("email");
         String password = hashPassword.encryptThisString(request.getParameter("pass"));
-        if(Validation(email,password)){
+
+        if(validateUser(email,password)){
             HttpSession session=request.getSession();
-            session.setAttribute("email", email); // ! a way to set attributes
+            session.setAttribute("email", email);
+            session.setAttribute("admin", validateAdmin(email));
+
             try {
                 request.getRequestDispatcher("/landing.jsp").forward(request,response);
             } catch (ServletException e) {
                 e.printStackTrace();
             }
         } else {
-            out.print("Invalid email or password");
+            out.print("Invalid email or password"); // TODO: 10.11.2021 check this one for better way
         }
     }
-    public boolean Validation(String email, String pw){
-        boolean exists = false;
+    public boolean validateUser(String email, String pw){
         try {
             Class.forName("org.mariadb.jdbc.Driver");
-            Connection con = DriverManager.getConnection(
+            Connection dbC = DriverManager.getConnection(
                     "jdbc:mariadb://172.17.0.1:3308/AMVDatabase", "root", "12345");
-            PreparedStatement ps = con.prepareStatement(
+            PreparedStatement ps = dbC.prepareStatement(
                     "select * from AMVUser where email=? and passwordHash=?");
             ps.setString(1, email);
             ps.setString(2, pw);
             ResultSet rs1 = ps.executeQuery();
-            exists = rs1.next();
+
+            return rs1.next(); // TODO: 10.11.2021 not sure if this is a good way of doing it
         } catch (Exception e){
             e.printStackTrace();
         }
-        return exists;
+        return false;
+    }
+
+    boolean validateAdmin(String email){
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection dbC = DriverManager.getConnection(
+                    "jdbc:mariadb://172.17.0.1:3308/AMVDatabase", "root", "12345");
+            PreparedStatement ps = dbC.prepareStatement(
+                    "select userAdmin from AMVUser where email=?");
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+
+            return rs.getBoolean("userAdmin");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
     }
 
     // no clue how to call this...
@@ -73,6 +93,5 @@ public class Login extends HttpServlet {
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
-
     }
 }

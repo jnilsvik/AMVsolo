@@ -27,7 +27,7 @@ CREATE OR REPLACE TABLE Tool (
 CREATE OR REPLACE TABLE AMVUser (
     userID INT NOT NULL auto_increment unique,
     email VARCHAR(50) NOT NULL unique,
-    passwordHash VARCHAR(250) NOT NULL,
+    password VARCHAR(250) NOT NULL,
     firstName VARCHAR(50),
     lastName VARCHAR(50) NOT NULL,
     phoneNumber VARCHAR(16),
@@ -91,7 +91,7 @@ VALUES ('Orbital_Sander', 'Eksentersliper 230V.PNG', 0, 20, 'Various_Tools', '1'
        ('Aerial_Work_Platform','Personløft Niftylift.PNG', 100, 100, 'Large_Equipment', '2', '0', 'Dette utstyret kan kun benyttes av personer som har hatt dokumentert sikkerhetsopplæring iht. Forskrift om utførelse av arbeid §10-1 og 10-2. En slik opplæring består av teoretisk og  praktisk opplæring som gir kunnskap om oppbygging, betjening, bruksegenskaper og  bruksområde samt vedlikehold og kontroll. Kursbevis utstedes til de som har gjennomført dette kurset. Maks løftekapasitet (SWL): 200kg inkl. 2 personer. Maks hastighet ved kjøring langs vei er 72 km/t, men tilpass alltid hastighet etter  veiforhold. Husk også å feste transportlås (eksenterstrammer) før transport, samt å frigjøre denne før bruk. Liften er ikke registrert og det er heller ikke nødvendig, men det er påbudt med lys. Siden  lysbøyle bak på liften er demonterbar er det viktig at bruker sjekker at denne er montert og virker. Det fins en egen manual kalt «Brukerens sikkerhetsveiledning» og «Brukermanual» som skal leses før utstyret tas i bruk. Disse skal alltid oppbevares i plastlomme i arbeidskorg. I samme plastlomme er det også en tegning som viser liftens dekningsareal/rekkevidde. Ved arbeid som kan innebære en del søl f.eks. malerarbeid er det brukers ansvar å dekke til  nødvendige deler av utstyret med plast. Dette vil kunne spare en for mye arbeid i ettertid. Husk å ta med nøkkel ved leie, samt å fjerne denne når utstyret ikke er i bruk. Maks. totalvekt på tilhengerlift er 1.432kg. Det er leiers ansvar å sørge for at en ikke trekker tilhenger som er tyngre enn det førerkort og bil tillater. Siden liften er relativt kostbar er det tegnet ansvar- og kaskoforsikring på denne. Skulle liften bli utsatt for skade som skyldes feil eller uvøren bruk, kan bruker bli erstatningspliktig. Erstatningsplikten vil kunne beløpe seg til egenandelen som for tiden er kr. 6000,-'),
        ('Power_Supply','Strømaggregat 3,7kw.PNG', 0, 50, 'Large_Equipment', '1', '0', ' Bruker avgiftsfri diesel. Motoroljenivå sjekkes før og etter bruk. Oljetype: Shell Ultra Ect 5W-30 (AMV nr. 0095-0069)');
 
-INSERT INTO AMVUser(passwordHash, email, phonenumber, firstname, lastname, unionmember, userAdmin)
+INSERT INTO AMVUser(password, email, phonenumber, firstname, lastname, unionmember, userAdmin)
 VALUES ('1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75', 'joachimn@uia.no', null, 'Joachim', 'Nilsvik','0', '1'),
        ('1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75', 'dilans@uia.no', null, 'Dilan', 'Shwane','1', '1'),
        ('1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75', 'mariusbn@uia.no', null, 'Marius Berg', 'Nordbø', '0', '1'),
